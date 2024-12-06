@@ -104,3 +104,66 @@ body {
     margin: 30px auto 20px;
 
 }
+@media (max-width: 768px) {
+    .card {
+        width: 80vw;  /* Make the card width larger on smaller screens */
+        padding: 15px; /* Adjust padding */
+    }
+
+    .search {
+        width: 70vw; /* Make search box wider on small screens */
+        height: 8vh; /* Adjust height */
+    }
+
+    .search input {
+        width: 80%; /* Make the input take more space */
+    }
+
+    .search img {
+        height: 25px; /* Smaller icon for mobile */
+        width: 25px;
+    }
+
+    .weather img {
+        height: 80px; /* Make the weather image smaller on mobile */
+        width: 80px;
+    }
+
+    .slot,
+    .wind,
+    .humidity {
+        flex-direction: column; /* Stack elements vertically on smaller screens */
+        margin: 15px auto 10px; /* Adjust margins */
+    }
+}
+@media (max-width: 480px) {
+    .card {
+        width: 90vw; /* Even larger card for very small screens */
+    }
+
+    .search {
+        width: 90vw; /* Full width search bar on very small screens */
+        height: 10vh; /* Adjust search height */
+    }
+
+    .search input {
+        width: 85%; /* Adjust input width */
+    }
+
+    .search img {
+        height: 20px; /* Smaller icon */
+        width: 20px;
+    }
+
+    .weather img {
+        height: 60px; /* Smaller weather icon */
+        width: 60px;
+    }
+
+    .slot,
+    .wind,
+    .humidity {
+        flex-direction: column;
+        margin: 10px auto;
+    }
+}
