@@ -38,13 +38,13 @@
         // const humidity = document.querySelector('.wind')
         
         const apikey="957b47aa54614204a7f173017240612";
-        const apiurl = "http://api.weatherapi.com/v1/current.json?key=957b47aa54614204a7f173017240612&q=London&aqi=no"
+        const apiurl = "https://api.weatherapi.com/v1/current.json?key=957b47aa54614204a7f173017240612&q=London&aqi=no"
         
         async function GetWeather(cityname) {
             console.log(cityname)
 
             try{
-                 let response = await fetch(`http://api.weatherapi.com/v1/current.json?key=957b47aa54614204a7f173017240612&q=${cityname}&aqi=no` );
+                 let response = await fetch(`https://api.weatherapi.com/v1/current.json?key=957b47aa54614204a7f173017240612&q=${cityname}&aqi=no` );
             let data = await response.json();
             console.log(data)
             document.querySelector('.cityname h1').innerText=data.location.name;
