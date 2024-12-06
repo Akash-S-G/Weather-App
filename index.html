@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="card">
+        <div class="search">
+        <input type="text" placeholder="Enter city name" id="inputfeild">
+        <img src="search_4410940.png" >
+    </div>
+    <div class="weather">
+        <img src="fog_3691317.png" alt="">
+        <div class="temp"><h1>22°C</h1></div>
+        <div class="cityname"><h1>London</h1></div>
+        <div class="slot">
+            <div class="wind">
+            <img src="wind_1230811.png" alt="">
+            <h1>34 Km/H</h1>
+            <h2>Wind Speed</h2>
+        </div>
+        <div class="humidity">
+            <img src="humidity_1779713.png" alt="">
+            <h1>20%</h1>
+            <h2>Humidity</h2>
+        </div>
+        </div>
+    </div>
+    </div>
+    <script>
+        const searchbox = document.querySelector('.search');
+        const searchBtn = document.querySelector('.search img');
+        
+        // const windspeed = document.querySelector('.wind')
+        // const humidity = document.querySelector('.wind')
+        
+        const apikey="957b47aa54614204a7f173017240612";
+        const apiurl = "http://api.weatherapi.com/v1/current.json?key=957b47aa54614204a7f173017240612&q=London&aqi=no"
+        
+        async function GetWeather(cityname) {
+            console.log(cityname)
+
+            try{
+                 let response = await fetch(`http://api.weatherapi.com/v1/current.json?key=957b47aa54614204a7f173017240612&q=${cityname}&aqi=no` );
+            let data = await response.json();
+            console.log(data)
+            document.querySelector('.cityname h1').innerText=data.location.name;
+            document.querySelector('.temp h1').innerText=data.current.temp_c + "°C";
+            document.querySelector('.wind h1').innerText=data.current.wind_kph + "Km/H";
+            document.querySelector('.humidity h1').innerText=data.current.humidity+"%";
+            }
+            catch(error)
+            {
+                console.log("city Not found")
+                document.querySelector('.cityname h1').innerText=" City Not Found";
+                document.querySelector('.wind h1').innerText="0 Km/H";
+                document.querySelector('.humidity h1').innerText="0 %";
+                document.querySelector('.temp h1').innerText= "0 °C";
+            }
+           
+            
+        }
+        window.addEventListener('keydown',(e)=>{
+            console.log(e.key)
+            if(e.key==="Enter")
+          {
+            const inputdata = document.querySelector('.search input').value;
+            console.log(inputdata)
+            if(inputdata !=undefined)
+          {
+             data =  GetWeather(inputdata);
+           document.querySelector('.weather').style.display= "block"
+          }
+          
+          }
+        })
+        searchBtn.addEventListener('click',()=>{
+            
+            const inputdata = document.querySelector('.search input').value;
+            // console.log(inputdata)
+           data =  GetWeather(inputdata);
+           document.querySelector('.weather').style.display= "block"
+
+
+        })
+    </script>
+</body>
+
+</html>
